@@ -42,6 +42,12 @@ export const scheduleWaterReminder = async (plant: Plant): Promise<string | null
     const nextWateringDate = new Date(plant.nextWatering);
     nextWateringDate.setHours(9, 0, 0, 0);
 
+    // Only schedule if the date is in the future
+    if (nextWateringDate.getTime() <= Date.now()) {
+      console.log('Next watering date is in the past, skipping notification scheduling');
+      return null;
+    }
+
     const notificationId = await Notifications.scheduleNotificationAsync({
       content: {
         title: '💧 Time to Water!',
@@ -49,9 +55,7 @@ export const scheduleWaterReminder = async (plant: Plant): Promise<string | null
         data: { plantId: plant.id },
         sound: true,
       },
-      trigger: nextWateringDate.getTime() > Date.now()
-        ? { type: Notifications.SchedulableTriggerInputTypes.DATE, date: nextWateringDate }
-        : { type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL, seconds: 5 }, // If date is in the past, trigger in 5 seconds for testing
+      trigger: { type: Notifications.SchedulableTriggerInputTypes.DATE, date: nextWateringDate },
     });
 
     return notificationId;
