@@ -26,7 +26,7 @@ export const addPlant = async (plant: Omit<Plant, 'id' | 'createdAt'>): Promise<
   const plants = await getPlants();
   const newPlant: Plant = {
     ...plant,
-    id: `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
+    id: `${Date.now()}-${Math.random().toString(36).substring(2, 11)}`,
     createdAt: new Date().toISOString(),
   };
   await savePlants([...plants, newPlant]);
