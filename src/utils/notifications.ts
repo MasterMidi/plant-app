@@ -8,6 +8,8 @@ Notifications.setNotificationHandler({
     shouldShowAlert: true,
     shouldPlaySound: true,
     shouldSetBadge: true,
+    shouldShowBanner: true,
+    shouldShowList: true,
   }),
 });
 
@@ -40,10 +42,6 @@ export const scheduleWaterReminder = async (plant: Plant): Promise<string | null
     const nextWateringDate = new Date(plant.nextWatering);
     nextWateringDate.setHours(9, 0, 0, 0);
 
-    const trigger = nextWateringDate.getTime() > Date.now()
-      ? { date: nextWateringDate }
-      : { seconds: 5 }; // If date is in the past, trigger in 5 seconds for testing
-
     const notificationId = await Notifications.scheduleNotificationAsync({
       content: {
         title: '💧 Time to Water!',
@@ -51,7 +49,9 @@ export const scheduleWaterReminder = async (plant: Plant): Promise<string | null
         data: { plantId: plant.id },
         sound: true,
       },
-      trigger,
+      trigger: nextWateringDate.getTime() > Date.now()
+        ? { type: Notifications.SchedulableTriggerInputTypes.DATE, date: nextWateringDate }
+        : { type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL, seconds: 5 }, // If date is in the past, trigger in 5 seconds for testing
     });
 
     return notificationId;
