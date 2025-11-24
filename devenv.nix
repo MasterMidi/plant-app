@@ -46,7 +46,7 @@ in
 
   languages.javascript = {
     enable = true;
-    package = pkgs.nodejs_24;
+    package = pkgs.nodejs_23;
     npm = {
       enable = true;
       install.enable = true;
