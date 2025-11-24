@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "workout-tracker",
-    "slug": "workout-tracker",
+    "name": "plant-app",
+    "slug": "plant-app",
     "version": "0.1.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "workouttracker",
+    "scheme": "plantapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "jsEngine": "hermes",
@@ -18,7 +18,7 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.anonymous.workouttracker"
+      "package": "com.anonymous.plantapp"
     },
     "web": {
       "bundler": "metro",
