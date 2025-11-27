@@ -1,0 +1,51 @@
+name: 🟣 Epic
+description: Define a large body of work or user flow
+title: "[EPIC] "
+labels: ["epic"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Epic Definition
+        Epics track high-level flows and large goals.
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal & Description
+      description: What is the high-level goal?
+    validations:
+      required: true
+
+  - type: textarea
+    id: user-value
+    attributes:
+      label: User Value
+      description: Why is this valuable to the user?
+      value: |
+        * **As a** ...
+        * **I want to** ...
+        * **So that** ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: in-scope
+    attributes:
+      label: In Scope
+      description: What specific functionalities are INCLUDED?
+      placeholder: |
+        - [ ] Functionality A
+        - [ ] Functionality B
+    validations:
+      required: true
+
+  - type: textarea
+    id: out-of-scope
+    attributes:
+      label: Out of Scope
+      description: What is explicitly EXCLUDED from this epic?
+      placeholder: |
+        - Feature C
+    validations:
+      required: false

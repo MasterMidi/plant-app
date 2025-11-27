@@ -1,0 +1,66 @@
+name: ✨ Feature
+description: A specific standalone capability
+title: "[FEAT] "
+labels: ["feature"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Feature Request
+        Define a specific capability that provides value to the user.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area / Component
+      description: Which part of the plant app does this feature belong to?
+      options:
+        - 🌿 Plant Management
+        - 💧 Watering System
+        - 🔔 Notifications
+        - 👤 User Profile
+        - ⚙️ Settings
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: A short paragraph describing what this feature does.
+    validations:
+      required: true
+
+  - type: textarea
+    id: user-story
+    attributes:
+      label: User Story
+      description: The "Who", "What", and "Why".
+      value: |
+        **As a** ...
+        **I want to** ...
+        **So that** ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: The definition of done.
+      placeholder: |
+        - [ ] Condition 1
+        - [ ] Condition 2
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: requirements
+    attributes:
+      label: Requirements Checklist
+      description: Please confirm the following before submitting.
+      options:
+        - label: I have checked for similar existing feature requests
+          required: true
+        - label: I have included UI mockups if this is a visual change
+          required: false

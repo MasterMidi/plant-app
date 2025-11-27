@@ -1,0 +1,41 @@
+name: 🔨 Task
+description: A specific unit of work or sub-task
+title: "[TASK] "
+labels: ["task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Technical Task
+        A specific unit of work needed to complete a Feature.
+
+  - type: dropdown
+    id: task-type
+    attributes:
+      label: Task Type
+      options:
+        - New Implementation
+        - Refactoring
+        - Configuration / Setup
+        - Documentation
+    validations:
+      required: true
+
+  - type: textarea
+    id: implementation
+    attributes:
+      label: Implementation Details
+      description: What exactly needs to be coded?
+      placeholder: |
+        1. Step one
+        2. Step two
+    validations:
+      required: true
+
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification
+      description: How can we verify this specific task works?
+    validations:
+      required: true
